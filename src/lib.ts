@@ -6,6 +6,7 @@ export interface SessionData {
   img?: string;
   isPro?: boolean;
   isLoggedIn: boolean;
+  isBlocked?: boolean;
 }
 
 export const defaultSession: SessionData = {

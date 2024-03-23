@@ -8,6 +8,7 @@ import { revalidatePath } from "next/cache";
 
 let username = "John";
 let isPro = true;
+let isBlocked = true;
 
 export const getSession = async () => {
   const session = await getIronSession<SessionData>(cookies(), sessionOptions);
@@ -15,6 +16,11 @@ export const getSession = async () => {
   if (!session.isLoggedIn) {
     session.isLoggedIn = defaultSession.isLoggedIn;
   }
+
+  // check the user in the db
+  session.isBlocked = isBlocked;
+  session.isPro = isPro;
+
   return session;
 };
 
